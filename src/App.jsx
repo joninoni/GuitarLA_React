@@ -9,7 +9,17 @@ function App() {
     const [cart,setCart] = useState([])
 
     function addToCart(item){
-        setCart( prevCart => [...prevCart,item])
+        //verificar si una guitarra ya existe
+        const itemExists=cart.some( guitar => guitar.id === item.id)
+        if(itemExists){
+            console.log("ya existe")
+        }
+        else{
+            console.log("No existe... agregando al carrito")
+            item.quantity = 1
+            setCart([...cart,item])
+            // setCart( prevCart => [...prevCart,item])
+        }
     }
 
     return (
