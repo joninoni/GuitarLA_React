@@ -10,9 +10,12 @@ function App() {
 
     function addToCart(item){
         //verificar si una guitarra ya existe
-        const itemExists=cart.some( guitar => guitar.id === item.id)
-        if(itemExists){
+        const itemExists=cart.findIndex( guitar => guitar.id === item.id)
+        if(itemExists >=0){
             console.log("ya existe")
+            const updateCart=[...cart]
+            updateCart[itemExists].quantity++
+            setCart(updateCart)
         }
         else{
             console.log("No existe... agregando al carrito")
