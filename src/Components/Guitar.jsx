@@ -1,4 +1,4 @@
-const Guitar = ({guitar}) => {
+const Guitar = ({guitar,setCart}) => {
 
     const {id,name,image,description,price} = guitar
 
@@ -14,7 +14,10 @@ const Guitar = ({guitar}) => {
                 <button 
                     type="button"
                     className="btn btn-dark w-100"
-                >Agregar al Carrito</button>
+                    onClick={()=> setCart( prevCart => [...prevCart,guitar])}
+                >
+                    Agregar al Carrito
+                </button>
             </div>
         </div>
     )
