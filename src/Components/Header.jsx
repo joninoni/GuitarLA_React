@@ -2,6 +2,8 @@ const Header = ({cart}) => {
 
     //state derivado
     const isEmpty= () => cart.length === 0
+    //sumar la cantidad de las guitarras
+    const cartTotal= () => cart.reduce((acc,el) => acc + (el.price * el.quantity),0)
 
     return (
         <header className="py-5 header">
@@ -80,7 +82,7 @@ const Header = ({cart}) => {
                                             <p className="text-end">
                                                 Total A Pagar
                                                 <span className="fw-bold">
-                                                    $899
+                                                    ${cartTotal()}
                                                 </span>
                                             </p>
                                         </>
