@@ -1,9 +1,11 @@
+import { useMemo } from "react"
+
 const Header = ({cart}) => { 
 
     //state derivado
-    const isEmpty= () => cart.length === 0
+    const isEmpty= useMemo ( () => cart.length === 0 ,[cart])
     //sumar la cantidad de las guitarras
-    const cartTotal= () => cart.reduce((acc,el) => acc + (el.price * el.quantity),0)
+    const cartTotal= useMemo (() => cart.reduce((acc,el) => acc + (el.price * el.quantity),0),[cart])
 
     return (
         <header className="py-5 header">
@@ -21,7 +23,7 @@ const Header = ({cart}) => {
                             <img className="img-fluid" src="./public/img/carrito.png" alt="imagen carrito" />
 
                             <div id="carrito" className="bg-white p-3">
-                                {isEmpty() ?(
+                                {isEmpty ?(
                                     <p className="text-center">
                                         No hay cursos                                    
                                     </p>
@@ -82,7 +84,7 @@ const Header = ({cart}) => {
                                             <p className="text-end">
                                                 Total A Pagar
                                                 <span className="fw-bold">
-                                                    ${cartTotal()}
+                                                    ${cartTotal}
                                                 </span>
                                             </p>
                                         </>
