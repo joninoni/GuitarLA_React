@@ -16,6 +16,7 @@ function App() {
         const itemExists=cart.findIndex( guitar => guitar.id === item.id)
         if(itemExists >=0){
             console.log("ya existe")
+            if(cart[itemExists].quantity >= MAX_ITEMS) return
             const updateCart=[...cart]
             updateCart[itemExists].quantity++
             setCart(updateCart)
