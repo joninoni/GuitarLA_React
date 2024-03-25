@@ -9,6 +9,7 @@ function App() {
     const [cart,setCart] = useState([])
 
     const MAX_ITEMS = 5
+    const MIN_ITEMS = 1
 
     function addToCart(item){
         //verificar si una guitarra ya existe
@@ -50,12 +51,28 @@ function App() {
         setCart(updateCart)
     }
 
+    function decreaseQuantity(id){
+
+        const updateCart = cart.map( item => {
+            if(item.id === id && item.quantity > MIN_ITEMS) {
+                return {
+                    ...item,
+                    quantity : item.quantity - 1
+                }
+            }
+            return item                       
+        })
+
+        setCart(updateCart)
+    }
+
     return (
     <>
         <Header
             cart={cart}
             removeFromCart={removeFromCart}
             increaseQuantity={increaseQuantity}
+            decreaseQuantity={decreaseQuantity}
         />
             
 
