@@ -1,11 +1,11 @@
 import { useMemo } from "react"
 
-const Header = ({cart}) => { 
+const Header = ({cart,removeFromCart}) => { 
 
     //state derivado
-    const isEmpty= useMemo ( () => cart.length === 0 ,[cart])
+    const isEmpty = useMemo ( () => cart.length === 0 ,[cart])
     //sumar la cantidad de las guitarras
-    const cartTotal= useMemo (() => cart.reduce((acc,el) => acc + (el.price * el.quantity),0),[cart])
+    const cartTotal = useMemo (() => cart.reduce((acc,el) => acc + (el.price * el.quantity),0),[cart])
 
     return (
         <header className="py-5 header">
@@ -73,6 +73,7 @@ const Header = ({cart}) => {
                                                                 <button
                                                                     className="btn btn-danger"
                                                                     type="button"
+                                                                    onClick={ () => removeFromCart(guitar.id) }
                                                                 >
                                                                     X
                                                                 </button>

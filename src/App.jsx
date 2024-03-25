@@ -25,10 +25,19 @@ function App() {
         }
     }
 
+    function removeFromCart(id){
+        // metodo 1 para eliminar un elemento del carrito
+        // const newCartItems = cart.filter(item => item.id !== id )
+        // setCart(newCartItems)
+        //metodo 2 para eliminar un elemento del carrito
+        setCart(prevCart => prevCart.filter( guitar => guitar.id !== id))
+    }
+
     return (
     <>
         <Header
             cart={cart}
+            removeFromCart={removeFromCart}
         />
             
 
@@ -41,7 +50,7 @@ function App() {
                                 guitar={guitar}
                                 key={guitar.id}
                                 setCart={setCart}
-                                addToCart={addToCart}
+                                addToCart={ addToCart}
                            />
                     ))}
                  
